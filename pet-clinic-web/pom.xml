@@ -10,8 +10,6 @@
     <artifactId>pet-clinic-web</artifactId>
 
     <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
     </properties>
     <dependencies>
         <dependency>
@@ -45,6 +43,7 @@
         </dependency>
     </dependencies>
 
+
     <build>
         <plugins>
             <plugin>
@@ -58,6 +57,7 @@
                         </exclude>
                     </excludes>
                     <outputDirectory>webapps</outputDirectory>
+
                 </configuration>
             </plugin>
         </plugins>
