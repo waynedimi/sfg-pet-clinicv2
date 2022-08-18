@@ -10,6 +10,7 @@ import guru.springframework.sfgpetclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import javax.management.remote.rmi.RMIJRMPServerImpl;
 import java.time.LocalDate;
 
 @Component
@@ -43,13 +44,19 @@ public class DataLoader implements CommandLineRunner {
         owner1.setId(1L);
         owner1.setFirstName("Micheal");
         owner1.setLastName("Weston");
+        owner1.setAddress("123 Brickerel");
+        owner1.setCity("Miami");
+        owner1.setTelephone("123123123123123");
 
-        Pet pet1 = new Pet();
+        Pet mikesPet = new Pet();
 
-        pet1.setPetType(dog);
-        LocalDate date = LocalDate.now();
-        pet1.setBirthDate(date);
-        pet1.setOwner(owner1);
+        mikesPet.setPetType(savedDogType);
+        mikesPet.setName("Rosco");
+        mikesPet.setBirthDate(LocalDate.now());
+        mikesPet.setOwner(owner1);
+        owner1.getPets().add(mikesPet);
+
+        System.out.println("Loaded Owner1 pets");
 
 
         ownerService.save(owner1);
@@ -58,6 +65,19 @@ public class DataLoader implements CommandLineRunner {
         owner2.setId(2L);
         owner2.setFirstName("Wayne");
         owner2.setLastName("Dimech");
+        owner2.setAddress("123 Brickerel");
+        owner2.setCity("Miami");
+        owner2.setTelephone("123123123123123");
+
+        Pet waynesCat = new Pet();
+
+        waynesCat.setPetType(savedCatType);
+        waynesCat.setName("Ricky Cat");
+        waynesCat.setBirthDate(LocalDate.now());
+        waynesCat.setOwner(owner2);
+        owner2.getPets().add(waynesCat);
+
+        System.out.println("Loaded Owner2 pets");
 
         ownerService.save(owner2);
 
