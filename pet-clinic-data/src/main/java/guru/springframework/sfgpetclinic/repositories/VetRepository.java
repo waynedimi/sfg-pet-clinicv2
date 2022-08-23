@@ -1,8 +1,10 @@
-//package guru.springframework.sfgpetclinic.repositories;
-//
-//import guru.springframework.sfgpetclinic.model.Vet;
-//import org.springframework.data.repository.CrudRepository;
-//import org.springframework.stereotype.Repository;
-//
-//public interface VetRepository extends CrudRepository<Vet , Long> {
-//}
+package guru.springframework.sfgpetclinic.repositories;
+
+import guru.springframework.sfgpetclinic.model.Owner;
+import guru.springframework.sfgpetclinic.model.Vet;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+@Repository
+public interface VetRepository extends CrudRepository<Vet , Long> {
+    Vet findByLastName(String lastName);
+}
