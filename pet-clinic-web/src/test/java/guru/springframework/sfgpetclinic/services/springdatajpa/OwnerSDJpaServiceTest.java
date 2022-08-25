@@ -4,7 +4,7 @@ import guru.springframework.sfgpetclinic.model.Owner;
 import guru.springframework.sfgpetclinic.repositories.OwnerRepository;
 import guru.springframework.sfgpetclinic.repositories.PetRepository;
 import guru.springframework.sfgpetclinic.repositories.PetTypeRepository;
-import org.hibernate.loader.collection.OneToManyJoinWalker;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -40,7 +40,6 @@ class OwnerSDJpaServiceTest {
 
     Owner returnOwner;
 
-
     @BeforeEach
     void setUp() {
         returnOwner = Owner.builder().id(1L).lastName(LAST_NAME).build();
@@ -57,7 +56,7 @@ class OwnerSDJpaServiceTest {
         Set<Owner> owners = service.findAll();
 
         assertNotNull(owners);
-        assertEquals(2 , owners.size());
+        assertEquals(2, owners.size());
     }
 
     @Test
@@ -68,6 +67,7 @@ class OwnerSDJpaServiceTest {
 
         assertNotNull(owner);
     }
+
     @Test
     void findByNotFoundId() {
         Mockito.when(ownerRepository.findById(anyLong())).thenReturn(Optional.empty());
@@ -95,7 +95,7 @@ class OwnerSDJpaServiceTest {
         service.delete(returnOwner);
 
         //Default is 1 times so there is no need to do Mockito.times(1)
-        Mockito.verify(ownerRepository , Mockito.times(1)).delete(any());
+        Mockito.verify(ownerRepository, Mockito.times(1)).delete(any());
     }
 
     @Test
@@ -112,7 +112,7 @@ class OwnerSDJpaServiceTest {
 
         Owner smith = service.findByLastName(LAST_NAME);
 
-        assertEquals(LAST_NAME , smith.getLastName());
+        assertEquals(LAST_NAME, smith.getLastName());
 
         Mockito.verify(ownerRepository).findByLastName(any());
 
